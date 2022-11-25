@@ -13,7 +13,9 @@
           <h2 style="margin-bottom: 20px">Wybierz swój bank</h2>
           <div class="d-flex justify-content-center">
             <div class="card" style="width: 200px; height: 150px">
-              <div class="card-body text-center">
+              <div class="card-body text-center"
+                   (click)="setSelectedBankName('Mock Bank')"
+                   [routerLink]="'/bank-login'">
                 <i class="bi bi-bank" style="font-size: 40px"></i>
                 <h5 class="card-title">Mock Bank</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Bank testowy</h6>

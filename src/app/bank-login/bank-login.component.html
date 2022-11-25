@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-8 panel">
+      <h2 style="margin-bottom: 20px">Zaloguj się do {{ bankName }}</h2>
+      <form [formGroup]="bankForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-md-12 col-lg-6 form-group">
+            <label for="login">Login</label>
+            <input
+              id="login"
+              class="form-control"
+              type="text"
+              maxlength="30"
+              placeholder="Pole wymagane"
+              formControlName="login">
+          </div>
+          <div class="spacing">
+              <span *ngIf="bankForm.get('login').invalid && bankForm.get('login').touched"
+                    class="invalid-input">
+                  To pole jest wymagane
+              </span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 col-lg-6 form-group">
+            <label for="password">Hasło</label>
+            <input
+              id="password"
+              class="form-control"
+              type="password"
+              maxlength="30"
+              placeholder="Pole wymagane"
+              formControlName="password">
+          </div>
+          <div class="spacing">
+              <span *ngIf="bankForm.get('password').invalid && bankForm.get('password').touched"
+                    class="invalid-input">
+                  To pole jest wymagane
+              </span>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center">
+          <button class="btn btn-primary"
+                  type="submit"
+                  [disabled]="bankForm.invalid">
+            Zaloguj się <i class="bi bi-box-arrow-in-right"></i>
+          </button>
+        </div>
+        <div class="d-flex justify-content-center invalid-input"
+             style="margin-top: 10px"
+             *ngIf="incorrectCredentials">
+            Nieprawidłowy login lub hasło
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

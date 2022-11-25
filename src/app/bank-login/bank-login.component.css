@@ -1,0 +1,9 @@
+.spacing {
+  height: 30px;
+}
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+.invalid-input {
+  color: #DD2E2E;
+}

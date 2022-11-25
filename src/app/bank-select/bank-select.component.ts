@@ -3,6 +3,8 @@ import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {PaymentDataResponse} from "../web/responses/payment-data-response";
 import {Endpoints} from "../constants/endpoints";
+import {PaymentService} from "../services/payment.service";
+import {BankService} from "../services/bank.service";
 
 @Component({
   selector: 'app-bank-select',
@@ -15,7 +17,8 @@ export class BankSelectComponent implements OnInit {
   loadingData = true;
   dataLoadedCorrectly: boolean;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {
+  constructor(private route: ActivatedRoute, private http: HttpClient, private paymentService: PaymentService,
+              private bankService: BankService) {
   }
 
   ngOnInit(): void {
@@ -26,6 +29,7 @@ export class BankSelectComponent implements OnInit {
           this.loadingData = false;
           this.transferAmount = response.orderValue;
           this.orderNumber = response.orderNumber;
+          this.paymentService.savePaymentData(this.transferAmount, this.orderNumber);
           this.dataLoadedCorrectly = true;
         },
         error: () => {
@@ -35,4 +39,7 @@ export class BankSelectComponent implements OnInit {
       });
   }
 
+  setSelectedBankName(bankName: string): void {
+    this.bankService.setBankName(bankName);
+  }
 }
