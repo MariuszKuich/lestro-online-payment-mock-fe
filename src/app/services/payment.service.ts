@@ -3,18 +3,18 @@ import {Injectable} from "@angular/core";
 @Injectable({providedIn: "root"})
 export class PaymentService {
   private orderValue: number;
-  private orderNumber: number;
+  private paymentUUID: string;
 
-  public savePaymentData(orderValue: number, orderNumber: number) {
+  public savePaymentData(orderValue: number, paymentUUID: string) {
     this.orderValue = orderValue;
-    this.orderNumber = orderNumber;
+    this.paymentUUID = paymentUUID;
   }
 
   public getOrderValue(): number {
     return this.orderValue;
   }
 
-  public getOrderNumber(): number {
-    return this.orderNumber;
+  public getPaymentUUID(): string {
+    return this.paymentUUID;
   }
 }

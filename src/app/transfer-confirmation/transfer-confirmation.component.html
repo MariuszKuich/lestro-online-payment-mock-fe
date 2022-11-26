@@ -1,1 +1,31 @@
-<p>transfer-confirmation works!</p>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-8 panel">
+      <h2 style="margin-bottom: 20px">{{ bankName }}</h2>
+      <div *ngIf="transferAttemptWasMade; else beforeTransferAttempt">
+        <h4 style="margin-bottom: 20px">Status przelewu: {{ transferStatus }}</h4>
+        <div class="d-flex justify-content-center">
+          <button class="btn btn-primary"
+                  (click)="onRedirect()">
+            Powrót do strony sklepu <i class="bi bi-box-arrow-in-right"></i>
+          </button>
+        </div>
+      </div>
+      <ng-template #beforeTransferAttempt>
+        <h4 style="margin-bottom: 20px">Saldo: {{ accountBalance }} zł</h4>
+        <h4 style="margin-bottom: 20px">Kwota przelewu: {{ orderValue }} zł</h4>
+        <div class="d-flex justify-content-center">
+          <button class="btn btn-primary"
+                  (click)="onTransferConfirmation()">
+            <span *ngIf="!transferPending; else transferRequestSent">
+              Potwierdź przelew <i class="bi bi-cash-stack"></i>
+            </span>
+            <ng-template #transferRequestSent>
+              <div class="spinner-border text-white" role="status"></div>
+            </ng-template>
+          </button>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

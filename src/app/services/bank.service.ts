@@ -18,4 +18,14 @@ export class BankService {
   public credentialsAreValid(login: string, password: string): boolean {
     return login == BankService.LOGIN && password == BankService.PASSWORD;
   }
+
+  public getAccountBalance(orderValue: number): number {
+    return orderValue + this.getRandomNumber();
+  }
+
+  private getRandomNumber(): number {
+    const min = 100;
+    const max = 350;
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
 }

@@ -23,13 +23,13 @@ export class BankSelectComponent implements OnInit {
 
   ngOnInit(): void {
     const paymentUUID = this.route.snapshot.params['paymentUUID'];
-    this.http.get<PaymentDataResponse>(`${Endpoints.BASE_ENDPOINT}/${paymentUUID}`)
+    this.http.get<PaymentDataResponse>(`${Endpoints.BACKEND_BASE_ENDPOINT}/${paymentUUID}`)
       .subscribe({
         next: response => {
           this.loadingData = false;
           this.transferAmount = response.orderValue;
           this.orderNumber = response.orderNumber;
-          this.paymentService.savePaymentData(this.transferAmount, this.orderNumber);
+          this.paymentService.savePaymentData(this.transferAmount, paymentUUID);
           this.dataLoadedCorrectly = true;
         },
         error: () => {
