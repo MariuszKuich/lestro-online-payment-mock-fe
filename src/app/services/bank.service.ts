@@ -19,8 +19,8 @@ export class BankService {
     return login == BankService.LOGIN && password == BankService.PASSWORD;
   }
 
-  public getAccountBalance(orderValue: number): number {
-    return orderValue + this.getRandomNumber();
+  public getAccountBalance(orderValue: number): string {
+    return (orderValue + this.getRandomNumber()).toFixed(2);
   }
 
   private getRandomNumber(): number {

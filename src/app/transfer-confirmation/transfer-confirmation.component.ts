@@ -13,7 +13,7 @@ import {TransferStatus} from "../enums/transfer-status";
 export class TransferConfirmationComponent implements OnInit {
   bankName: string;
   orderValue: number;
-  accountBalance: number;
+  accountBalance: string;
   transferStatus: string;
 
   transferAttemptWasMade = false;
